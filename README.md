@@ -150,6 +150,13 @@ Our approach enhances the traditional white cane rather than replacing it, ensur
 
 ---
 
+## 🎥 Prototype Demo
+Software simulation prototype demonstrating AI detection, navigation workflow, and emergency system.
+
+(Prototype UI built using simulation tools for hackathon validation)
+
+---
+
 ## 🌍 Impact & Benefits
 - Improves independence of visually impaired individuals  
 - Reduces accident risks  
