@@ -37,58 +37,88 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 3. Functional Requirements
+## 3. Prototype Scope (Hackathon Implementation)
 
-### 3.1 Obstacle Detection System
+This submission focuses on a software simulation prototype of the AI-powered smart assistive stick.
+
+The prototype demonstrates:
+
+- AI-based obstacle detection workflow
+- Navigation assistance interaction
+- Emergency alert system simulation
+- Voice assistant interaction
+- Virtual sensor data visualization
+- Mobile app interface simulation
+
+Hardware implementation is planned for future stages and is outside the hackathon prototype scope.
+
+---
+
+## 4. System Actors
+
+Primary Actor:
+- Visually impaired user
+
+Secondary Actors:
+- Caregiver / family member
+- Emergency responder
+- Mobile application user
+- Healthcare or rehabilitation centers
+
+---
+
+## 5. Functional Requirements
+
+### 5.1 Obstacle Detection System
 - **FR-01**: Detect obstacles in the path within a range of 0.5m to 3m
 - **FR-02**: Identify obstacles at multiple heights (ground level, knee level, head level)
 - **FR-03**: Provide distance-based alerts through vibration intensity
 - **FR-04**: Detect moving objects and calculate their trajectory
 - **FR-05**: Distinguish between static and dynamic obstacles
 
-### 3.2 AI Object Detection and Recognition
+### 5.2 AI Object Detection and Recognition
 - **FR-06**: Identify and classify common objects (vehicles, people, animals, furniture)
 - **FR-07**: Recognize traffic signals and pedestrian crossings
 - **FR-08**: Detect and read text from signs and labels using OCR
 - **FR-09**: Identify currency notes and denominations
 - **FR-10**: Provide voice feedback describing detected objects and their positions
 
-### 3.3 GPS Navigation System
+### 5.3 GPS Navigation System
 - **FR-11**: Provide turn-by-turn voice navigation to specified destinations
 - **FR-12**: Calculate optimal routes considering pedestrian pathways
 - **FR-13**: Announce nearby landmarks and points of interest
 - **FR-14**: Track user location in real-time
 - **FR-15**: Provide distance and ETA information
 
-### 3.4 Emergency Alert System
+### 5.4 Emergency Alert System
 - **FR-16**: Trigger emergency alerts via button press or voice command
 - **FR-17**: Send SMS/WhatsApp alerts with GPS location to pre-configured contacts
 - **FR-18**: Make automated emergency calls
 - **FR-19**: Provide fall detection and automatic alert triggering
 - **FR-20**: Store emergency contact information securely
 
-### 3.5 Voice Assistant
+### 5.5 Voice Assistant
 - **FR-21**: Accept voice commands in Hindi and English
 - **FR-22**: Provide voice feedback for all system operations
 - **FR-23**: Answer queries about surroundings and navigation
 - **FR-24**: Read out time, date, and weather information
 - **FR-25**: Support hands-free operation for all features
 
-### 3.6 Water and Hazard Detection
+### 5.6 Water and Hazard Detection
 - **FR-26**: Detect water bodies and puddles in the path
 - **FR-27**: Identify stairs, slopes, and uneven terrain
 - **FR-28**: Detect potholes and ground-level hazards
 - **FR-29**: Provide advance warning for detected hazards
 - **FR-30**: Differentiate between shallow and deep water
 
-### 3.7 Vibration Alert System
+### 5.7 Vibration Alert System
 - **FR-31**: Provide haptic feedback for different types of obstacles
 - **FR-32**: Use distinct vibration patterns for various hazards
 - **FR-33**: Adjust vibration intensity based on obstacle proximity
 - **FR-34**: Support customizable vibration patterns
 - **FR-35**: Provide silent mode operation using only vibrations
 
-### 3.8 Mobile Application Integration
+### 5.8 Mobile Application Integration
 - **FR-36**: Companion mobile app for configuration and monitoring
 - **FR-37**: Remote tracking of user location by family members
 - **FR-38**: Battery status and device health monitoring
@@ -97,44 +127,44 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 4. Non-Functional Requirements
+## 6. Non-Functional Requirements
 
-### 4.1 Performance
+### 6.1 Performance
 - **NFR-01**: Object detection latency < 200ms
 - **NFR-02**: GPS location accuracy within 5 meters
 - **NFR-03**: Voice command response time < 1 second
 - **NFR-04**: System boot time < 30 seconds
 - **NFR-05**: Continuous operation for minimum 8 hours on single charge
 
-### 4.2 Reliability
+### 6.2 Reliability
 - **NFR-06**: System uptime of 99.5% during operation
 - **NFR-07**: Accurate obstacle detection rate > 95%
 - **NFR-08**: False positive rate < 5%
 - **NFR-09**: Emergency alert delivery success rate > 98%
 - **NFR-10**: Weather-resistant operation (IP65 rating)
 
-### 4.3 Usability
+### 6.3 Usability
 - **NFR-11**: Intuitive interface requiring minimal training
 - **NFR-12**: Ergonomic design suitable for extended use
 - **NFR-13**: Weight not exceeding 400 grams
 - **NFR-14**: Simple one-button emergency activation
 - **NFR-15**: Clear and understandable voice feedback
 
-### 4.4 Scalability
+### 6.4 Scalability
 - **NFR-16**: Support for future AI model updates
 - **NFR-17**: Modular architecture for feature additions
 - **NFR-18**: Cloud connectivity for data synchronization
 - **NFR-19**: Support for multiple language packs
 - **NFR-20**: Expandable sensor integration capability
 
-### 4.5 Security and Privacy
+### 6.5 Security and Privacy
 - **NFR-21**: Encrypted communication for emergency alerts
 - **NFR-22**: Secure storage of personal and contact information
 - **NFR-23**: Privacy-compliant location tracking
 - **NFR-24**: User consent for data collection
 - **NFR-25**: GDPR and Indian data protection compliance
 
-### 4.6 Affordability
+### 6.6 Affordability
 - **NFR-26**: Target manufacturing cost < ₹5,000
 - **NFR-27**: Retail price < ₹8,000
 - **NFR-28**: Low maintenance and operational costs
@@ -143,9 +173,9 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 5. Hardware Requirements
+## 7. Hardware Requirements
 
-### 5.1 Sensors
+### 7.1 Sensors
 - **Ultrasonic Sensors** (3-4 units): For obstacle detection at multiple angles
 - **LiDAR Sensor**: For precise distance measurement and 3D mapping
 - **Water Detection Sensor**: For identifying water hazards
@@ -154,27 +184,27 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 - **Microphone Array**: For voice command input and noise cancellation
 - **Speaker**: For voice feedback and alerts
 
-### 5.2 Processing Unit
+### 7.2 Processing Unit
 - **Raspberry Pi 4 (4GB RAM)** or **NVIDIA Jetson Nano**: For AI inference and processing
 - **Arduino/ESP32**: For sensor data collection and real-time control
 - **GPS Module** (NEO-6M or better): For location tracking and navigation
 
-### 5.3 Camera System
+### 7.3 Camera System
 - **HD Camera Module** (5MP or higher): For object detection and recognition
 - **Wide-angle lens**: For broader field of view
 
-### 5.4 Connectivity
+### 7.4 Connectivity
 - **4G/LTE Module**: For emergency alerts and cloud connectivity
 - **Bluetooth 5.0**: For mobile app pairing
 - **Wi-Fi Module**: For firmware updates and data sync
 
-### 5.5 Power System
+### 7.5 Power System
 - **Rechargeable Li-ion Battery** (10,000mAh): For extended operation
 - **USB-C Charging Port**: For fast charging
 - **Power Management IC**: For efficient power distribution
 - **Battery Level Indicator**: LED or voice-based
 
-### 5.6 Physical Structure
+### 7.6 Physical Structure
 - **Lightweight Aluminum/Carbon Fiber Body**: Durable and portable
 - **Ergonomic Handle**: Comfortable grip with integrated controls
 - **Waterproof Casing**: IP65 rated for all-weather use
@@ -183,42 +213,42 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 6. Software Requirements
+## 8. Software Requirements
 
-### 6.1 Operating System
+### 8.1 Operating System
 - **Raspberry Pi OS** or **Ubuntu** for main processing unit
 - **Arduino IDE/PlatformIO** for microcontroller programming
 
-### 6.2 AI and Machine Learning
+### 8.2 AI and Machine Learning
 - **TensorFlow Lite** or **PyTorch Mobile**: For on-device AI inference
 - **OpenCV**: For computer vision and image processing
 - **YOLO v5/v8** or **MobileNet SSD**: For real-time object detection
 - **Tesseract OCR**: For text recognition
 - **Custom trained models**: For Indian context (currency, signs, vehicles)
 
-### 6.3 Navigation and Mapping
+### 8.3 Navigation and Mapping
 - **Google Maps API** or **OpenStreetMap**: For navigation
 - **Mapbox SDK**: For offline maps
 - **GPS libraries** (gpsd, pynmea2): For location processing
 
-### 6.4 Voice Processing
+### 8.4 Voice Processing
 - **Google Speech-to-Text API** or **Vosk** (offline): For voice recognition
 - **Google Text-to-Speech** or **eSpeak**: For voice feedback
 - **Pocketsphinx**: For offline wake word detection
 - **Hindi and English language models**
 
-### 6.5 Communication
+### 8.5 Communication
 - **Twilio API** or **MSG91**: For SMS alerts
 - **WhatsApp Business API**: For WhatsApp notifications
 - **MQTT Protocol**: For IoT communication
 - **RESTful APIs**: For mobile app integration
 
-### 6.6 Mobile Application
+### 8.6 Mobile Application
 - **React Native** or **Flutter**: For cross-platform app development
 - **Firebase**: For real-time database and authentication
 - **Google Maps SDK**: For location tracking interface
 
-### 6.7 Development Tools
+### 8.7 Development Tools
 - **Python 3.8+**: Primary programming language
 - **C/C++**: For microcontroller and performance-critical code
 - **Git**: For version control
@@ -226,33 +256,35 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 7. AI Features and Capabilities
 
-### 7.1 Computer Vision
+
+## 9. AI Features and Capabilities
+
+### 9.1 Computer Vision
 - **Real-time Object Detection**: Identify 80+ common objects using YOLO/MobileNet
 - **Depth Estimation**: Calculate distance to objects using monocular depth estimation
 - **Scene Understanding**: Provide contextual description of surroundings
 - **Facial Recognition**: Identify known persons (optional, with consent)
 
-### 7.2 Natural Language Processing
+### 9.2 Natural Language Processing
 - **Multilingual Voice Commands**: Support for Hindi, English, and regional languages
 - **Context-aware Responses**: Understand user intent and provide relevant information
 - **Text-to-Speech**: Natural-sounding voice output in multiple languages
 - **Speech-to-Text**: Accurate transcription even in noisy environments
 
-### 7.3 Predictive Analytics
+### 9.3 Predictive Analytics
 - **Obstacle Trajectory Prediction**: Anticipate movement of dynamic obstacles
 - **Route Optimization**: Learn user preferences and suggest optimal paths
 - **Hazard Prediction**: Identify potentially dangerous situations in advance
 - **Usage Pattern Analysis**: Adapt to user behavior over time
 
-### 7.4 Edge AI Processing
+### 9.4 Edge AI Processing
 - **On-device Inference**: Process AI models locally for low latency
 - **Model Optimization**: Quantized models for efficient processing
 - **Federated Learning**: Improve models while preserving privacy
 - **Adaptive AI**: Models that improve with usage
 
-### 7.5 Indian Context Specialization
+### 9.5 Indian Context Specialization
 - **Indian Currency Recognition**: Identify ₹10, ₹20, ₹50, ₹100, ₹200, ₹500, ₹2000 notes
 - **Regional Sign Recognition**: Understand Hindi/English signboards
 - **Indian Traffic Patterns**: Trained on Indian road conditions
@@ -260,7 +292,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 8. Target Users
+## 10. Target Users
 
 ### Primary Users
 - **Visually Impaired Individuals**: Complete blindness or severe visual impairment
@@ -282,7 +314,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 9. Expected Impact
+## 11. Expected Impact
 
 ### Social Impact
 - **Enhanced Independence**: Enable 8+ million visually impaired Indians to travel independently
@@ -314,7 +346,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 10. Constraints and Limitations
+## 12. Constraints and Limitations
 
 ### Technical Constraints
 - **Battery Life**: Limited to 8-10 hours of continuous operation
@@ -362,7 +394,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 11. Success Criteria
+## 13. Success Criteria
 
 ### Technical Success Metrics
 - Obstacle detection accuracy > 95%
@@ -389,7 +421,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 12. Project Timeline
+## 14. Project Timeline
 
 ### Phase 1: Research and Design (Months 1-2)
 - User research and requirement validation
@@ -424,7 +456,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 13. Risk Analysis and Mitigation
+## 15. Risk Analysis and Mitigation
 
 ### Technical Risks
 | Risk | Impact | Probability | Mitigation |
@@ -450,7 +482,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 14. Compliance and Standards
+## 16. Compliance and Standards
 
 ### Accessibility Standards
 - **WCAG 2.1**: Web Content Accessibility Guidelines for mobile app
@@ -474,7 +506,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 15. Support and Maintenance
+## 17. Support and Maintenance
 
 ### User Support
 - **24/7 Helpline**: Toll-free number for emergency support
@@ -499,7 +531,7 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 
 ---
 
-## 16. Future Enhancements
+## 18. Future Enhancements
 
 ### Short-term (6-12 months)
 - Integration with smart home devices
@@ -521,6 +553,21 @@ Current assistive technologies are either expensive, bulky, or provide limited f
 - AR glasses integration
 - Autonomous navigation in complex environments
 - Global expansion with multi-country support
+
+---
+
+## 19. Prototype Deliverables
+
+The hackathon submission includes:
+
+- Software simulation of smart stick workflow
+- AI detection interaction design
+- Navigation system prototype
+- Emergency alert interface
+- Voice assistant interaction model
+- System architecture and design documentation
+
+This validates feasibility before physical hardware implementation.
 
 ---
 
