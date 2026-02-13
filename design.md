@@ -1,5 +1,8 @@
 # Design Document: AI Powered Smart Assistive Stick for Visually Impaired
 
+# **Prototype Note:** This design includes both the planned hardware architecture and the software simulation prototype developed for the hackathon demonstration.
+
+
 ## Document Information
 - **Project**: AI Powered Smart Assistive Stick
 - **Version**: 1.0
@@ -7,20 +10,6 @@
 - **Hackathon**: Bharat AI Hackathon
 - **Document Type**: Technical Design Specification
 
----
-
-## Table of Contents
-1. System Architecture
-2. Hardware Design
-3. Software Design
-4. AI Integration
-5. Working Flow
-6. Data Flow Architecture
-7. Technology Stack
-8. Security Architecture
-9. Future Enhancements
-
----
 
 ## 1. System Architecture
 
@@ -144,9 +133,34 @@ Sensors → Microcontroller → Main Processor → AI Engine → Decision Logic
 
 ---
 
-## 2. Hardware Design
+## 2. Prototype Architecture (Hackathon Simulation)
 
-### 2.1 Physical Design Specifications
+For the Bharat AI Hackathon, the system is demonstrated as a software-based
+interactive prototype instead of full hardware deployment.
+
+The prototype simulates:
+
+• Obstacle detection using virtual sensor data
+• AI camera detection using simulated bounding boxes
+• GPS navigation using map simulation
+• Emergency SOS alerts
+• Voice assistant interaction
+• Guardian tracking dashboard
+• Sensor dashboard visualization
+
+The prototype is implemented using UI/UX simulation tools and web-based
+interaction models to validate the concept, usability, and workflow of the
+smart assistive system.
+
+This approach ensures rapid prototyping, demonstration capability, and
+user experience validation before physical hardware implementation.
+
+---
+
+
+## 3. Hardware Design
+
+### 3.1 Physical Design Specifications
 
 #### Stick Dimensions
 - **Length**: 90-120 cm (adjustable)
@@ -194,7 +208,7 @@ Sensors → Microcontroller → Main Processor → AI Engine → Decision Logic
 └─────────────────────────────────────────┘
 ```
 
-### 2.2 Sensor Configuration
+### 3.2 Sensor Configuration
 
 #### Ultrasonic Sensor Array
 ```
@@ -247,7 +261,7 @@ Sensors → Microcontroller → Main Processor → AI Engine → Decision Logic
 - **Interface**: UART
 - **Features**: SBAS, QZSS support
 
-### 2.3 Processing Units
+### 3.3 Processing Units
 
 #### Main Processor Options
 
@@ -271,7 +285,7 @@ Sensors → Microcontroller → Main Processor → AI Engine → Decision Logic
 - **Interface**: Serial communication with main processor
 - **Tasks**: Sensor polling, vibration control, emergency button monitoring
 
-### 2.4 Power System Design
+### 3.4 Power System Design
 
 #### Battery Specifications
 - **Type**: Lithium-ion rechargeable
@@ -303,7 +317,7 @@ Battery (10,000mAh)
 - Battery level monitoring (5 levels)
 - USB-C fast charging support
 
-### 2.5 Connectivity Modules
+### 3.5 Connectivity Modules
 
 #### 4G/LTE Module
 - **Model**: SIM7600 or Quectel EC25
@@ -320,7 +334,7 @@ Battery (10,000mAh)
 - **Standard**: 802.11ac (built-in RPi/Jetson)
 - **Purpose**: Firmware updates, data sync
 
-### 2.6 Output Devices
+### 3.6 Output Devices
 
 #### Vibration Motors
 - **Type**: Eccentric Rotating Mass (ERM) motors
@@ -344,7 +358,7 @@ Battery (10,000mAh)
 - **Status LED**: Blue (Bluetooth), Yellow (GPS), White (4G)
 - **Emergency LED**: Red flashing
 
-### 2.7 Enclosure Design
+### 3.7 Enclosure Design
 
 #### Material Selection
 - **Handle**: ABS plastic with rubber overmolding
@@ -366,9 +380,9 @@ Battery (10,000mAh)
 
 ---
 
-## 3. Software Design
+## 4. Software Design
 
-### 3.1 Software Architecture
+### 4.1 Software Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -407,9 +421,9 @@ Battery (10,000mAh)
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### 3.2 Core Modules
+### 4.2 Core Modules
 
-#### 3.2.1 Sensor Manager Module
+#### 4.2.1 Sensor Manager Module
 
 **Purpose**: Collect, validate, and preprocess sensor data
 
@@ -459,7 +473,7 @@ class SensorManager:
 - Sensor health monitoring
 - Automatic calibration
 
-#### 3.2.2 AI Engine Module
+#### 4.2.2 AI Engine Module
 
 **Purpose**: Object detection, recognition, and scene understanding
 
@@ -499,7 +513,7 @@ class AIEngine:
 - Batch processing support
 - Confidence scoring
 
-#### 3.2.3 Navigation Service
+#### 4.2.3 Navigation Service
 
 **Purpose**: GPS navigation and route guidance
 
@@ -539,7 +553,7 @@ class NavigationService:
 - Voice-guided navigation
 - Landmark announcements
 
-#### 3.2.4 Voice Service
+#### 4.2.4 Voice Service
 
 **Purpose**: Voice recognition and synthesis
 
@@ -574,7 +588,7 @@ class VoiceService:
 - Natural voice synthesis
 - Context-aware responses
 
-#### 3.2.5 Emergency Service
+#### 4.2.5 Emergency Service
 
 **Purpose**: Handle emergency situations and alerts
 
@@ -613,7 +627,7 @@ class EmergencyService:
 - GPS location sharing
 - Emergency contact management
 
-#### 3.2.6 Obstacle Detection Module
+#### 4.2.6 Obstacle Detection Module
 
 **Purpose**: Real-time obstacle detection and classification
 
@@ -652,9 +666,9 @@ class ObstacleDetector:
 - Trajectory prediction for moving objects
 - Multi-level alerts
 
-### 3.3 Data Management
+### 4.3 Data Management
 
-#### 3.3.1 Local Database Schema
+#### 4.3.1 Local Database Schema
 
 **SQLite Database Structure**:
 
@@ -719,7 +733,7 @@ CREATE TABLE settings (
 );
 ```
 
-#### 3.3.2 Cloud Database (Firebase/MongoDB)
+#### 4.3.2 Cloud Database (Firebase/MongoDB)
 
 **Collections**:
 - **users**: User profiles and preferences
@@ -729,9 +743,9 @@ CREATE TABLE settings (
 - **feedback**: User feedback and ratings
 - **incidents**: Emergency incidents log
 
-### 3.4 API Design
+### 4.4 API Design
 
-#### 3.4.1 RESTful API Endpoints
+#### 4.4.1 RESTful API Endpoints
 
 **User Management**
 ```
@@ -771,7 +785,7 @@ GET    /api/v1/analytics/obstacles
 GET    /api/v1/analytics/routes
 ```
 
-#### 3.4.2 WebSocket Endpoints
+#### 4.4.2 WebSocket Endpoints
 
 **Real-time Communication**
 ```
@@ -780,9 +794,9 @@ ws://api.smartstick.com/ws/alerts
 ws://api.smartstick.com/ws/status
 ```
 
-### 3.5 Mobile Application Design
+### 4.5 Mobile Application Design
 
-#### 3.5.1 App Architecture (React Native / Flutter)
+#### 4.5.1 App Architecture (React Native / Flutter)
 
 ```
 src/
@@ -812,7 +826,7 @@ src/
     └── validators.js
 ```
 
-#### 3.5.2 Key App Features
+#### 4.5.2 Key App Features
 
 **Dashboard**
 - Device connection status
@@ -850,11 +864,11 @@ src/
 
 ---
 
-## 4. AI Integration
+## 5. AI Integration
 
-### 4.1 AI Model Architecture
+### 5.1 AI Model Architecture
 
-#### 4.1.1 Object Detection Model
+#### 5.1.1 Object Detection Model
 
 **Model Selection**: YOLOv8-Nano (Optimized for Edge Devices)
 
@@ -887,7 +901,7 @@ Output (Bounding Boxes + Classes + Confidence)
 - Indian traffic signs
 - Two-wheeler vehicles
 
-#### 4.1.2 Depth Estimation Model
+#### 5.1.2 Depth Estimation Model
 
 **Model**: MiDaS v2.1 (Monocular Depth Estimation)
 
@@ -907,7 +921,7 @@ Depth Map Output (384x384)
 - Relative depth accuracy
 - Integration with object detection
 
-#### 4.1.3 OCR Model
+#### 5.1.3 OCR Model
 
 **Model**: Tesseract 4.0 + EasyOCR
 
@@ -922,7 +936,7 @@ Depth Map Output (384x384)
 - Bus numbers
 - Product labels
 
-#### 4.1.4 Currency Recognition Model
+#### 5.1.4 Currency Recognition Model
 
 **Custom CNN Model**
 
@@ -951,9 +965,9 @@ Output (8 classes)
 
 **Accuracy**: 96.5% on test set
 
-### 4.2 AI Pipeline
+### 5.2 AI Pipeline
 
-#### 4.2.1 Real-time Processing Pipeline
+#### 5.2.1 Real-time Processing Pipeline
 
 ```
 Camera Capture (30 FPS)
@@ -975,7 +989,7 @@ Decision Logic
 Output Generation (Voice/Vibration)
 ```
 
-#### 4.2.2 Model Optimization Techniques
+#### 5.2.2 Model Optimization Techniques
 
 **Quantization**:
 - Convert FP32 to INT8
@@ -999,9 +1013,9 @@ Output Generation (Voice/Vibration)
 - Dynamic tensor memory
 - Multi-stream execution
 
-### 4.3 AI Training Infrastructure
+### 5.3 AI Training Infrastructure
 
-#### 4.3.1 Training Pipeline
+#### 5.3.1 Training Pipeline
 
 ```
 Data Collection
@@ -1023,7 +1037,7 @@ Performance Monitoring
 Continuous Improvement
 ```
 
-#### 4.3.2 Data Augmentation Strategies
+#### 5.3.2 Data Augmentation Strategies
 
 **Image Augmentation**:
 - Random rotation (±15°)
@@ -1040,7 +1054,7 @@ Continuous Improvement
 - Lighting variation
 - Crowd simulation
 
-#### 4.3.3 Model Versioning
+#### 5.3.3 Model Versioning
 
 **MLOps Pipeline**:
 - Git for code versioning
@@ -1050,9 +1064,9 @@ Continuous Improvement
 - A/B testing framework
 - Rollback capability
 
-### 4.4 AI-Powered Features
+### 5.4 AI-Powered Features
 
-#### 4.4.1 Intelligent Scene Understanding
+#### 5.4.1 Intelligent Scene Understanding
 
 **Context-Aware Descriptions**:
 ```python
@@ -1082,7 +1096,7 @@ def describe_scene(detections, depth_map):
 #  2 meters on your left."
 ```
 
-#### 4.4.2 Predictive Obstacle Avoidance
+#### 5.4.2 Predictive Obstacle Avoidance
 
 **Trajectory Prediction**:
 ```python
@@ -1106,7 +1120,7 @@ def predict_collision(obstacle, user_velocity):
     return False, None
 ```
 
-#### 4.4.3 Adaptive Learning
+#### 5.4.3 Adaptive Learning
 
 **User Behavior Learning**:
 - Preferred routes
@@ -1121,9 +1135,9 @@ def predict_collision(obstacle, user_velocity):
 - Learn user-specific vocabulary
 - Optimize alert sensitivity
 
-### 4.5 AI Model Performance Metrics
+### 5.5 AI Model Performance Metrics
 
-#### 4.5.1 Object Detection Metrics
+#### 5.5.1 Object Detection Metrics
 
 | Metric | Target | Achieved |
 |--------|--------|----------|
@@ -1134,7 +1148,7 @@ def predict_collision(obstacle, user_velocity):
 | Precision | >90% | 92.1% |
 | Recall | >85% | 87.4% |
 
-#### 4.5.2 OCR Metrics
+#### 5.5.2 OCR Metrics
 
 | Language | Accuracy | Speed |
 |----------|----------|-------|
@@ -1142,7 +1156,7 @@ def predict_collision(obstacle, user_velocity):
 | Hindi | 89.7% | 1.5s |
 | Mixed | 86.3% | 1.8s |
 
-#### 4.5.3 Currency Detection Metrics
+#### 5.5.3 Currency Detection Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -1153,9 +1167,9 @@ def predict_collision(obstacle, user_velocity):
 
 ---
 
-## 5. Working Flow
+## 6. Working Flow
 
-### 5.1 System Startup Flow
+### 6.1 System Startup Flow
 
 ```
 Power On
@@ -1181,7 +1195,7 @@ System Ready
 Enter Main Loop
 ```
 
-### 5.2 Main Operation Loop
+### 6.2 Main Operation Loop
 
 ```
 ┌─────────────────────────────────────────┐
@@ -1219,7 +1233,7 @@ Enter Main Loop
 └──────────────┴──────────────────────────┘
 ```
 
-### 5.3 Obstacle Detection Flow
+### 6.3 Obstacle Detection Flow
 
 ```
 Sensor Reading
@@ -1261,7 +1275,7 @@ User Response Monitoring
     └─→ Adjust future alerts based on response
 ```
 
-### 5.4 Navigation Flow
+### 6.4 Navigation Flow
 
 ```
 User Request
@@ -1306,7 +1320,7 @@ Destination Reached
     └─→ End navigation
 ```
 
-### 5.5 Emergency Alert Flow
+### 6.5 Emergency Alert Flow
 
 ```
 Emergency Trigger
@@ -1352,7 +1366,7 @@ Confirmation
     └─→ Voice: "Emergency alert cancelled"
 ```
 
-### 5.6 Voice Command Flow
+### 6.6 Voice Command Flow
 
 ```
 Wake Word Detection
@@ -1390,7 +1404,7 @@ Response Generation
 Return to Listening Mode
 ```
 
-### 5.7 Water Detection Flow
+### 6.7 Water Detection Flow
 
 ```
 Water Sensor Reading (Every 100ms)
@@ -1417,9 +1431,9 @@ Is moisture > threshold?
 
 ---
 
-## 6. Data Flow Architecture
+## 7. Data Flow Architecture
 
-### 6.1 System-Level Data Flow
+### 7.1 System-Level Data Flow
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -1476,9 +1490,9 @@ Is moisture > threshold?
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 6.2 Sensor Data Flow
+### 7.2 Sensor Data Flow
 
-#### 6.2.1 Ultrasonic Sensor Data Flow
+#### 7.2.1 Ultrasonic Sensor Data Flow
 
 ```
 Ultrasonic Sensor (HC-SR04)
@@ -1510,7 +1524,7 @@ Obstacle detection logic
 }
 ```
 
-#### 6.2.2 Camera Data Flow
+#### 7.2.2 Camera Data Flow
 
 ```
 Camera Module
@@ -1553,7 +1567,7 @@ Send to decision logic
 }
 ```
 
-#### 6.2.3 GPS Data Flow
+#### 7.2.3 GPS Data Flow
 
 ```
 GPS Module (NEO-6M)
@@ -1591,7 +1605,7 @@ Update current location
 }
 ```
 
-### 6.3 AI Processing Data Flow
+### 7.3 AI Processing Data Flow
 
 ```
 Input Image (640×640×3)
@@ -1637,7 +1651,7 @@ Semantic Understanding
 Output to Decision Logic
 ```
 
-### 6.4 Navigation Data Flow
+### 7.4 Navigation Data Flow
 
 ```
 User Input: Destination
@@ -1680,7 +1694,7 @@ Destination Check
     └─→ Announce arrival
 ```
 
-### 6.5 Emergency Alert Data Flow
+### 7.5 Emergency Alert Data Flow
 
 ```
 Emergency Trigger
@@ -1732,7 +1746,7 @@ Location Updates (Every 30s)
     └─→ Continue until cancelled
 ```
 
-### 6.6 Voice Command Data Flow
+### 7.6 Voice Command Data Flow
 
 ```
 Microphone Input
@@ -1780,7 +1794,7 @@ Text-to-Speech
 Audio Output (Speaker)
 ```
 
-### 6.7 Data Synchronization Flow
+### 7.7 Data Synchronization Flow
 
 ```
 Local Device Data
@@ -1824,9 +1838,9 @@ Sync Confirmation
     └─→ Update last_sync timestamp
 ```
 
-### 6.8 Data Storage Architecture
+### 7.8 Data Storage Architecture
 
-#### 6.8.1 Local Storage (SQLite)
+#### 7.8.1 Local Storage (SQLite)
 
 **Storage Hierarchy**:
 ```
@@ -1851,7 +1865,7 @@ Sync Confirmation
     └── (temporary files)
 ```
 
-#### 6.8.2 Cloud Storage (Firebase/AWS)
+#### 7.8.2 Cloud Storage (Firebase/AWS)
 
 **Database Structure**:
 ```
@@ -1880,9 +1894,9 @@ models/
 
 ---
 
-## 7. Technology Stack
+## 8. Technology Stack
 
-### 7.1 Hardware Stack
+### 8.1 Hardware Stack
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
@@ -1895,9 +1909,9 @@ models/
 | Power | Li-ion 10,000mAh | Energy supply |
 | Output | ERM motors, 3W speaker | Haptic and audio feedback |
 
-### 7.2 Software Stack
+### 8.2 Software Stack
 
-#### 7.2.1 Operating System & Runtime
+#### 8.2.1 Operating System & Runtime
 ```
 ┌─────────────────────────────────────┐
 │  Raspberry Pi OS / Ubuntu 20.04    │
@@ -1906,7 +1920,7 @@ models/
 └─────────────────────────────────────┘
 ```
 
-#### 7.2.2 AI & Machine Learning
+#### 8.2.2 AI & Machine Learning
 ```
 ┌─────────────────────────────────────┐
 │  TensorFlow Lite 2.x                │
@@ -1917,7 +1931,7 @@ models/
 └─────────────────────────────────────┘
 ```
 
-#### 7.2.3 Core Libraries
+#### 8.2.3 Core Libraries
 
 **Python Libraries**:
 ```python
@@ -1969,7 +1983,7 @@ psutil==5.9.5
 #include <ArduinoJson.h>      // JSON parsing
 ```
 
-#### 7.2.4 Mobile App Stack
+#### 8.2.4 Mobile App Stack
 
 **React Native**:
 ```javascript
@@ -2003,7 +2017,7 @@ react-native-paper: 5.8.0
 react-native-vector-icons: 9.2.0
 ```
 
-#### 7.2.5 Backend Stack
+#### 8.2.5 Backend Stack
 
 **Node.js / Express**:
 ```javascript
@@ -2028,7 +2042,7 @@ helmet: 7.0.0
 cors: 2.8.5
 ```
 
-### 7.3 Cloud Services
+### 8.3 Cloud Services
 
 | Service | Provider | Purpose |
 |---------|----------|---------|
@@ -2043,7 +2057,7 @@ cors: 2.8.5
 | Monitoring | Sentry / New Relic | Error tracking |
 | CDN | Cloudflare | Content delivery |
 
-### 7.4 Development Tools
+### 8.4 Development Tools
 
 | Tool | Purpose |
 |------|---------|
@@ -2058,7 +2072,7 @@ cors: 2.8.5
 | pytest | Unit testing |
 | GitHub Actions | CI/CD |
 
-### 7.5 Communication Protocols
+### 8.5 Communication Protocols
 
 | Protocol | Usage |
 |----------|-------|
@@ -2073,9 +2087,9 @@ cors: 2.8.5
 
 ---
 
-## 8. Security Architecture
+## 9. Security Architecture
 
-### 8.1 Security Layers
+### 9.1 Security Layers
 
 ```
 ┌─────────────────────────────────────────┐
@@ -2107,7 +2121,7 @@ cors: 2.8.5
 └─────────────────────────────────────────┘
 ```
 
-### 8.2 Data Encryption
+### 9.2 Data Encryption
 
 **At Rest**:
 - SQLite database encryption (SQLCipher)
@@ -2119,7 +2133,7 @@ cors: 2.8.5
 - End-to-end encryption for emergency alerts
 - Encrypted Bluetooth pairing
 
-### 8.3 Privacy Protection
+### 9.3 Privacy Protection
 
 **Data Minimization**:
 - Collect only necessary data
@@ -2139,108 +2153,128 @@ cors: 2.8.5
 
 ---
 
-## 9. Future Enhancements
+## 10. Simulation Modules in Prototype
 
-### 9.1 Short-term Enhancements (6-12 months)
+The software prototype includes:
 
-#### 9.1.1 Smart Home Integration
+1. Live walking simulation environment
+2. Sensor dashboard showing real-time virtual data
+3. AI vision detection interface
+4. OCR reading demo
+5. GPS navigation interface
+6. SOS emergency simulation
+7. Guardian tracking view
+8. Voice assistant interaction panel
+9. Battery and device status system
+
+These modules represent the digital twin of the hardware system.
+
+---
+
+
+
+## 11. Future Enhancements
+
+### 11.1 Short-term Enhancements (6-12 months)
+
+#### 11.1.1 Smart Home Integration
 - **Voice Control**: Integration with Alexa, Google Assistant
 - **IoT Connectivity**: Control smart home devices via stick
 - **Home Automation**: Automated door opening, light control
 - **Implementation**: MQTT bridge, smart home APIs
 
-#### 9.1.2 Public Transport Assistance
+#### 11.1.2 Public Transport Assistance
 - **Bus/Metro Detection**: Identify approaching vehicles
 - **Route Information**: Real-time transit updates
 - **Stop Announcements**: Automated stop notifications
 - **Implementation**: Computer vision + transit APIs
 
-#### 9.1.3 Augmented Audio Reality
+#### 11.1.3 Augmented Audio Reality
 - **3D Audio**: Spatial audio for directional awareness
 - **Sound Beacons**: Audio markers for navigation
 - **Ambient Sound Enhancement**: Amplify important sounds
 - **Implementation**: Binaural audio processing
 
-#### 9.1.4 Enhanced Offline Capabilities
+#### 11.1.4 Enhanced Offline Capabilities
 - **Offline Maps**: Complete offline navigation
 - **Offline Voice**: Local TTS/STT models
 - **Offline AI**: All models run locally
 - **Implementation**: Model compression, local storage
 
-#### 9.1.5 Multi-user Profiles
+#### 11.1.5 Multi-user Profiles
 - **Family Sharing**: Multiple users per device
 - **Profile Switching**: Voice-based user identification
 - **Personalized Settings**: Per-user preferences
 - **Implementation**: Voice biometrics, cloud sync
 
-### 9.2 Medium-term Enhancements (1-2 years)
+### 11.2 Medium-term Enhancements (1-2 years)
 
-#### 9.2.1 Smart City Integration
+#### 11.2.1 Smart City Integration
 - **Traffic Light Detection**: Real-time signal status
 - **Crosswalk Assistance**: Safe crossing guidance
 - **Smart Infrastructure**: Integration with city IoT
 - **Crowdsourced Data**: Community obstacle mapping
 - **Implementation**: V2X communication, city APIs
 
-#### 9.2.2 Advanced AI Capabilities
+#### 11.2.2 Advanced AI Capabilities
 - **Scene Prediction**: Anticipate environmental changes
 - **Behavior Learning**: Adapt to user patterns
 - **Contextual Awareness**: Understand complex scenarios
 - **Emotion Detection**: Recognize user stress levels
 - **Implementation**: Advanced ML models, edge TPU
 
-#### 9.2.3 Social Features
+#### 11.2.3 Social Features
 - **User Community**: Connect with other users
 - **Route Sharing**: Share safe routes
 - **Peer Assistance**: Request help from nearby users
 - **Accessibility Reviews**: Rate locations
 - **Implementation**: Social platform, geofencing
 
-#### 9.2.4 Digital Payment Integration
+#### 11.2.4 Digital Payment Integration
 - **UPI Integration**: Voice-based payments
 - **Currency Verification**: Authenticate notes
 - **Transaction History**: Voice-accessible records
 - **Merchant Detection**: Identify payment terminals
 - **Implementation**: UPI SDK, NFC reader
 
-#### 9.2.5 Wearable Integration
+#### 11.2.5 Wearable Integration
 - **Smartwatch Companion**: Haptic feedback on wrist
 - **Earbuds Integration**: Spatial audio navigation
 - **Smart Glasses**: AR overlay (future)
 - **Fitness Tracking**: Monitor health metrics
 - **Implementation**: Bluetooth LE, wearable SDKs
 
-### 9.3 Long-term Enhancements (2-5 years)
+### 11.3 Long-term Enhancements (2-5 years)
 
-#### 9.3.1 Brain-Computer Interface (BCI)
+#### 11.3.1 Brain-Computer Interface (BCI)
 - **Thought-based Control**: Control via neural signals
 - **Direct Sensory Feedback**: Bypass traditional senses
 - **Cognitive Enhancement**: AI-assisted decision making
 - **Research Phase**: Collaborate with neuroscience labs
 - **Implementation**: Non-invasive EEG, ML interpretation
 
-#### 9.3.2 Advanced Haptic Systems
+#### 11.3.2 Advanced Haptic Systems
 - **Ultrasonic Haptics**: Mid-air tactile feedback
 - **Electrotactile Feedback**: Electrical stimulation
 - **Thermal Feedback**: Temperature-based alerts
 - **Texture Simulation**: Feel virtual surfaces
 - **Implementation**: Ultrasonic arrays, electrode arrays
 
-#### 9.3.3 AR Glasses Integration
+#### 11.3.3 AR Glasses Integration
 - **Visual Overlay**: For partially sighted users
 - **Object Highlighting**: Enhance contrast
 - **Text Magnification**: Real-time zoom
 - **Navigation Arrows**: Visual guidance
 - **Implementation**: AR SDK, computer vision
 
-#### 9.3.4 Autonomous Navigation
+#### 11.3.4 Autonomous Navigation
 - **Self-driving Mode**: Motorized stick guidance
 - **Path Planning**: Optimal route calculation
 - **Obstacle Avoidance**: Automatic steering
 - **Safety Override**: User maintains control
 - **Implementation**: Robotics, SLAM algorithms
 
-#### 9.3.5 Global Expansion
+#### 11.3.5 Global Expansion
 - **Multi-country Support**: 50+ countries
 - **100+ Languages**: Comprehensive language support
 - **Local Customization**: Region-specific features
@@ -2248,37 +2282,37 @@ cors: 2.8.5
 - **Cultural Adaptation**: Respect local norms
 - **Implementation**: Localization, partnerships
 
-### 9.4 Research & Development Areas
+### 11.4 Research & Development Areas
 
-#### 9.4.1 AI Research
+#### 11.4.1 AI Research
 - **Few-shot Learning**: Learn from minimal data
 - **Continual Learning**: Adapt without forgetting
 - **Explainable AI**: Transparent decision-making
 - **Federated Learning**: Privacy-preserving training
 - **Neuromorphic Computing**: Brain-inspired processors
 
-#### 9.4.2 Sensor Technology
+#### 11.4.2 Sensor Technology
 - **Solid-state LiDAR**: More reliable, cheaper
 - **Thermal Imaging**: See in complete darkness
 - **Radar Sensors**: All-weather detection
 - **Quantum Sensors**: Ultra-precise measurements
 - **Bio-sensors**: Health monitoring
 
-#### 9.4.3 Power Management
+#### 11.4.3 Power Management
 - **Solar Charging**: Integrated solar panels
 - **Wireless Charging**: Qi standard support
 - **Energy Harvesting**: Kinetic energy conversion
 - **Solid-state Batteries**: Higher capacity, safer
 - **Supercapacitors**: Rapid charging
 
-#### 9.4.4 Materials Science
+#### 11.4.4 Materials Science
 - **Graphene Composites**: Lighter, stronger
 - **Self-healing Materials**: Automatic repair
 - **Smart Materials**: Adaptive properties
 - **Biodegradable Components**: Eco-friendly
 - **Nanocoatings**: Enhanced durability
 
-### 9.5 Feature Roadmap
+### 11.5 Feature Roadmap
 
 ```
 Year 1 (2026)
@@ -2306,23 +2340,23 @@ Year 4-5 (2029-2030)
 └─ Global expansion
 ```
 
-### 9.6 Scalability Considerations
+### 11.6 Scalability Considerations
 
-#### 9.6.1 Technical Scalability
+#### 11.6.1 Technical Scalability
 - **Microservices Architecture**: Independent scaling
 - **Load Balancing**: Distribute traffic
 - **Caching Strategy**: Redis for performance
 - **CDN Integration**: Global content delivery
 - **Database Sharding**: Horizontal scaling
 
-#### 9.6.2 Business Scalability
+#### 11.6.2 Business Scalability
 - **Manufacturing**: Automated production lines
 - **Distribution**: Multi-channel strategy
 - **Support**: Tiered support system
 - **Partnerships**: NGOs, government programs
 - **Pricing Tiers**: Basic, Premium, Enterprise
 
-#### 9.6.3 Geographic Scalability
+#### 11.6.3 Geographic Scalability
 - **Phase 1**: Major Indian cities (10)
 - **Phase 2**: Tier 2/3 cities (50)
 - **Phase 3**: Rural areas (100+ districts)
@@ -2331,35 +2365,35 @@ Year 4-5 (2029-2030)
 
 ---
 
-## 10. Testing & Quality Assurance
+## 12. Testing & Quality Assurance
 
-### 10.1 Testing Strategy
+### 12.1 Testing Strategy
 
-#### 10.1.1 Unit Testing
+#### 12.1.1 Unit Testing
 - **Sensor Modules**: Individual sensor accuracy
 - **AI Models**: Model performance metrics
 - **API Endpoints**: Request/response validation
 - **Coverage Target**: >80%
 
-#### 10.1.2 Integration Testing
+#### 12.1.2 Integration Testing
 - **Sensor Fusion**: Combined sensor accuracy
 - **End-to-end Flows**: Complete user journeys
 - **API Integration**: Third-party service integration
 - **Hardware-Software**: Component interaction
 
-#### 10.1.3 User Acceptance Testing
+#### 12.1.3 User Acceptance Testing
 - **Beta Testing**: 100+ visually impaired users
 - **Usability Testing**: Task completion rates
 - **Accessibility Testing**: WCAG compliance
 - **Field Testing**: Real-world scenarios
 
-#### 10.1.4 Performance Testing
+#### 12.1.4 Performance Testing
 - **Load Testing**: Concurrent user handling
 - **Stress Testing**: System limits
 - **Latency Testing**: Response time measurement
 - **Battery Testing**: Power consumption analysis
 
-### 10.2 Quality Metrics
+### 12.2 Quality Metrics
 
 | Metric | Target | Measurement |
 |--------|--------|-------------|
@@ -2375,9 +2409,9 @@ Year 4-5 (2029-2030)
 
 ---
 
-## 11. Deployment Strategy
+## 13. Deployment Strategy
 
-### 11.1 Pilot Deployment
+### 13.1 Pilot Deployment
 
 **Phase 1: Internal Testing (Month 1-2)**
 - 10 devices for team testing
@@ -2399,7 +2433,7 @@ Year 4-5 (2029-2030)
 - Marketing campaign
 - Retail partnerships
 
-### 11.2 Support Infrastructure
+### 13.2 Support Infrastructure
 
 **Customer Support**:
 - 24/7 helpline (toll-free)
@@ -2421,7 +2455,24 @@ Year 4-5 (2029-2030)
 
 ---
 
-## 12. Conclusion
+## 14. Hackathon Prototype Scope
+
+For the Bharat AI Hackathon, this system is demonstrated through a software-based interactive prototype.
+
+The prototype simulates:
+- AI obstacle detection
+- Navigation workflow
+- Emergency alert interaction
+- Voice assistant behavior
+- Guardian monitoring interface
+- Sensor dashboard visualization
+
+This validates real-world feasibility before physical hardware implementation.
+
+---
+
+
+## 15. Conclusion
 
 The AI Powered Smart Assistive Stick represents a comprehensive, well-architected solution that combines cutting-edge AI technology with practical hardware design to address the mobility challenges faced by visually impaired individuals. The system architecture is designed for:
 
